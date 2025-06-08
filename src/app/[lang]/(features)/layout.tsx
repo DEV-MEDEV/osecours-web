@@ -4,10 +4,16 @@ import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
 
 interface FeaturesLayoutProps {
   children: React.ReactNode;
-  params: { lang: string };
+  params: Promise<{ lang: string }>; // 🎯 Promise requis
 }
 
-export default function FeaturesLayout({ children }: FeaturesLayoutProps) {
+export default async function FeaturesLayout({
+  children,
+  params,
+}: FeaturesLayoutProps) {
+  // Await params
+  await params; // Remove unused lang variable
+
   return (
     <SidebarProvider
       style={
