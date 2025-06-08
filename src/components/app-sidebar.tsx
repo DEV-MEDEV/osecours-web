@@ -1,27 +1,32 @@
 'use client';
 
 import * as React from 'react';
+import Image from 'next/image';
 import {
-  IconCamera,
-  IconChartBar,
-  IconDashboard,
+  Icon360View,
+  // IconAlarm,
+  IconAlpha,
+  IconChartArea,
+  // IconCamera,
+  // IconChartBar,
+  // IconDashboard,
   IconDatabase,
-  IconFileAi,
-  IconFileDescription,
+  // IconFileAi,
+  // IconFileDescription,
   IconFileWord,
-  IconFolder,
-  IconHelp,
-  IconInnerShadowTop,
-  IconListDetails,
+  IconMap,
+  //IconFolder,
+  // IconHelp,
+  // IconListDetails,
   IconReport,
-  IconSearch,
-  IconSettings,
-  IconUsers,
+  //  IconSearch,
+  // IconSettings,
+  // IconUsers,
 } from '@tabler/icons-react';
 
-import { NavDocuments } from '@/components/nav-documents';
-import { NavMain } from '@/components/nav-main';
-import { NavSecondary } from '@/components/nav-secondary';
+import { NavDocuments } from '@/components/nav-menu';
+import { NavDocuments2 } from '@/components/nav-menu-2';
+import { NavDocuments3 } from '@/components/nav-menu-3';
 import { NavUser } from '@/components/nav-user';
 import {
   Sidebar,
@@ -39,102 +44,11 @@ const data = {
     email: 'm@example.com',
     avatar: '/avatars/shadcn.jpg',
   },
-  navMain: [
+
+  citoyennes: [
     {
-      title: 'Dashboard',
-      url: '#',
-      icon: IconDashboard,
-    },
-    {
-      title: 'Lifecycle',
-      url: '#',
-      icon: IconListDetails,
-    },
-    {
-      title: 'Analytics',
-      url: '#',
-      icon: IconChartBar,
-    },
-    {
-      title: 'Projects',
-      url: '#',
-      icon: IconFolder,
-    },
-    {
-      title: 'Team',
-      url: '#',
-      icon: IconUsers,
-    },
-  ],
-  navClouds: [
-    {
-      title: 'Capture',
-      icon: IconCamera,
-      isActive: true,
-      url: '#',
-      items: [
-        {
-          title: 'Active Proposals',
-          url: '#',
-        },
-        {
-          title: 'Archived',
-          url: '#',
-        },
-      ],
-    },
-    {
-      title: 'Proposal',
-      icon: IconFileDescription,
-      url: '#',
-      items: [
-        {
-          title: 'Active Proposals',
-          url: '#',
-        },
-        {
-          title: 'Archived',
-          url: '#',
-        },
-      ],
-    },
-    {
-      title: 'Prompts',
-      icon: IconFileAi,
-      url: '#',
-      items: [
-        {
-          title: 'Active Proposals',
-          url: '#',
-        },
-        {
-          title: 'Archived',
-          url: '#',
-        },
-      ],
-    },
-  ],
-  navSecondary: [
-    {
-      title: 'Settings',
-      url: '#',
-      icon: IconSettings,
-    },
-    {
-      title: 'Get Help',
-      url: '#',
-      icon: IconHelp,
-    },
-    {
-      title: 'Search',
-      url: '#',
-      icon: IconSearch,
-    },
-  ],
-  documents: [
-    {
-      name: 'Data Library',
-      url: '#',
+      name: 'Nouvelles alertes',
+      url: '/fr/tableau-de-bord',
       icon: IconDatabase,
     },
     {
@@ -148,6 +62,30 @@ const data = {
       icon: IconFileWord,
     },
   ],
+  zones: [
+    {
+      name: 'Carte Interactive',
+      url: '#',
+      icon: IconMap,
+    },
+  ],
+  interventions: [
+    {
+      name: 'En cours',
+      url: '#',
+      icon: Icon360View,
+    },
+    {
+      name: 'Equipes disponibles',
+      url: '#',
+      icon: IconAlpha,
+    },
+    {
+      name: 'Statistiques',
+      url: '#',
+      icon: IconChartArea,
+    },
+  ],
 };
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
@@ -158,20 +96,26 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           <SidebarMenuItem>
             <SidebarMenuButton
               asChild
-              className="data-[slot=sidebar-menu-button]:!p-1.5"
+              className="data-[slot=sidebar-menu-button]:!px-1 py-8"
             >
-              <a href="#">
-                <IconInnerShadowTop className="!size-5" />
-                <span className="text-base font-semibold">Acme Inc.</span>
+              <a href="#" className="flex items-center gap-2">
+                <Image
+                  src="/logo.png"
+                  alt="O'Secours Logo"
+                  width={40}
+                  height={40}
+                  className="dark:invert"
+                />
+                <span className="text-xl font-black">O&apos;Secours</span>
               </a>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={data.navMain} />
-        <NavDocuments items={data.documents} />
-        <NavSecondary items={data.navSecondary} className="mt-auto" />
+        <NavDocuments items={data.citoyennes} />
+        <NavDocuments2 items={data.zones} />
+        <NavDocuments3 items={data.interventions} />
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={data.user} />
