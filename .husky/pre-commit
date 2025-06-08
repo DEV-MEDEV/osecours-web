@@ -1,0 +1,23 @@
+#!/bin/sh
+
+TASK_PATTERN="^(feature|config|bug|fix|security)/#[a-zA-Z0-9]+ ~ .+"
+
+commit_message=$(git log -1 --pretty=format:%s)
+
+if ! echo "$commit_message" | grep -E "$TASK_PATTERN" > /dev/null; then
+    echo "ERROR: Commit message must follow the format:"
+    echo "  category/#taskid ~ message"
+    echo "Examples:"
+    echo "  feature/#8697qqh8u ~ added new API endpoint"  
+    echo "  fix/#123abc ~ resolved crash issue"
+    echo "Current message: $commit_message"
+    exit 1
+fi
+
+echo "🔧 Formatting code..."
+pnpm exec lint-staged
+
+echo "🏗️ Building project..."
+pnpm build
+
+echo "✅ All checks passed!"
