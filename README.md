@@ -1,19 +1,26 @@
-O'Secours Web - Guide Développeur Front-End 👨‍💻
+# O'Secours Web - Guide Développeur Front-End 👨‍💻
+
 Guide complet pour l'équipe de développement front-end de la plateforme O'Secours.
-🎯 Standards de l'équipe
+
+## 🎯 Standards de l'équipe
+
 Ce projet suit des standards stricts pour maintenir la qualité du code et faciliter la collaboration. Tous les développeurs doivent respecter ces règles.
-🚀 Stack technique
 
-Framework : Next.js 15.3.3 (App Router)
-Language : TypeScript (obligatoire)
-Styling : Tailwind CSS
-Package Manager : pnpm (obligatoire)
-Git Hooks : Husky + lint-staged
-CI/CD : GitHub Actions
+## 🚀 Stack technique
 
-⚡ Setup initial développeur
-1. Installation
-bash# Cloner le projet
+- **Framework** : Next.js 15.3.3 (App Router)
+- **Language** : TypeScript (obligatoire)
+- **Styling** : Tailwind CSS
+- **Package Manager** : pnpm (obligatoire)
+- **Git Hooks** : Husky + lint-staged
+- **CI/CD** : GitHub Actions
+
+## ⚡ Setup initial développeur
+
+### 1. Installation
+
+```bash
+# Cloner le projet
 git clone [URL_DU_REPO]
 cd osecours-web
 
@@ -28,8 +35,10 @@ pnpm prepare
 
 # Lancer en développement
 pnpm dev
+
 2. Vérification de l'environnement
-bash# Tester que tout fonctionne
+
+bash # Tester que tout fonctionne
 pnpm build     # Doit réussir
 pnpm lint      # Aucune erreur
 📐 Standards de développement
@@ -42,7 +51,7 @@ Tests du build - Le code doit compiler sans erreur
 
 📝 Convention de commits
 Format obligatoire :
-bashcategory/#taskid ~ description
+category/#taskid ~ description
 Catégories autorisées :
 
 feature/#id ~ description - Nouvelle fonctionnalité
@@ -109,7 +118,8 @@ export default function Component({ title, isActive = false }: ComponentProps) {
   );
 }
 Nommage des fichiers
-bash# ✅ Composants
+
+# ✅ Composants
 components/
   Header/
     Header.tsx
@@ -133,6 +143,7 @@ utils/
   formatDate.ts
   validateEmail.ts
 Organisation Tailwind
+
 typescript// ✅ Classes ordonnées et lisibles
 <div className="
   flex items-center justify-between
@@ -151,7 +162,9 @@ Commit-msg (automatique)
 bash✅ Commit message format valid!
 # ou
 ❌ ERROR: Commit message must follow format
+
 Si échec : Le commit est bloqué. Corrigez et recommitez.
+
 🚀 Scripts disponibles
 bash# Développement
 pnpm dev              # Serveur de développement
